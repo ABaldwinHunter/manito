@@ -4,6 +4,8 @@ class CreateEvents < ActiveRecord::Migration
       t.date :exchange_date
       t.date :draw_date
       t.integer :max_price
+      t.string :title
+      t.text :description
       t.string :location
       t.references :user #admin
       t.string :invite_key
