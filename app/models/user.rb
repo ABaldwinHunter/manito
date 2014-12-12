@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 
   has_many :giftees, through: :user_events, class_name: "User", source: :giftee
 
-  has_one :wishlist
+  has_many :wishlists
 
   has_many :items, through: :wishlist
 end
