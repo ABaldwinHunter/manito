@@ -1,3 +1,5 @@
 class UserEvent < ActiveRecord::Base
-  # Remember to create a migration!
+  belongs_to :user#giver, class_name: "User"
+  belongs_to :giftee, class_name: "User"
+  belongs_to :event
 end
