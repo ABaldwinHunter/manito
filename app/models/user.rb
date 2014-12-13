@@ -1,7 +1,5 @@
 class User < ActiveRecord::Base
   has_secure_password
-  validates_confirmation_of :password
-  validates_presence_of :password_confirmation
   validates :email, uniqueness: true
 
   has_many :user_events#, foreign_key: :giver_id
@@ -12,6 +10,15 @@ class User < ActiveRecord::Base
   has_many :wishlists
 
   has_many :items, through: :wishlists
+
+  def send_email_invites(email_addresses, message)
+    email_addresses.each do |email_address|
+      Pony.mail(:to => email_address,
+                :from => self.email,
+                :subject => 'Secret Santa Invite',
+                :body => message)
+    end
+  end
 
 
 end
