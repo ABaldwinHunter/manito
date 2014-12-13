@@ -10,6 +10,7 @@ end
 
 post '/events' do
   @event = Event.create(params[:event])
+  send_email_invites
   redirect '/events'
 end
 
