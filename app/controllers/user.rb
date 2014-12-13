@@ -19,17 +19,17 @@ post '/users/login' do
   user = User.find_by(email: params[:user][:email])
   if user && user.authenticate(params[:user][:password])
     session[:user_id] = user.id
-    redirect "/users/#{user.id}"
+    redirect "/users/#{user.id}/events"
   else
     session[:error] = "invalid login information"
     redirect '/'
   end
 end
 
-get '/users/:id' do |id|
+get '/users/:id/events' do |id|
   @user = User.find id
   @events = @user.events
-  erb :'users/exchanges'
+  erb :'users/events'
 end
 
 get '/users/:id/edit' do |id|
