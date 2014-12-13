@@ -21,3 +21,5 @@ gem 'shotgun'
 gem 'faker'
 
 gem 'bcrypt'
+
+gem 'pony'

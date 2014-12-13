@@ -10,7 +10,9 @@ end
 
 post '/events' do
   @event = Event.create(params[:event])
-  send_email_invites
+  emails_list = parse_emails( params[:event][:emails] )
+  user = User.find session[:user_id]
+  user.send_email_invites(emails_list, params[:event][:message])
   redirect '/events'
 end
 

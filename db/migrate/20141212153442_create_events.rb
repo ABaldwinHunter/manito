@@ -9,6 +9,8 @@ class CreateEvents < ActiveRecord::Migration
       t.string :location
       t.references :user #admin
       t.string :invite_key
+      t.text :emails
+      t.text :message
 
       t.timestamps
     end

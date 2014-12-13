@@ -19,13 +19,13 @@
   <form id="new-event-form" action="/events" method="post">
     Title: <input type = "text" name= "event[title]" ><br>
     Location: <input type = "text" name= "event[location]" ><br>
-    Secret Santa Assignment Date: <input type="text" class="datepicker" name="draw_date"> <br>
+    Secret Santa Assignment Date: <input type="text" class="datepicker" name="event[draw_date]"> <br>
 
-    Gift Exchange Date: <input type="text" class="datepicker" name="exchange_date"><br>
+    Gift Exchange Date: <input type="text" class="datepicker" name="event[exchange_date]"><br>
     Description: <textarea> </textarea><br>
     Maximum Gift Price: <input type = "text" name= "event[max_price]" ><br>
-    Email List <textarea placeholder= "friend@example.com, someone@someplace.com" ></textarea><br>
-    Invite Message <textarea> </textarea><br>
+    Email List <textarea placeholder= "friend@example.com, someone@someplace.com" name="event[emails]" ></textarea><br>
+    Invite Message <textarea name="event[message]"> </textarea><br>
     <input type="submit" value="Create and Send Invites"><br>
   </form>
 
