@@ -1,1 +1,12 @@
-
+<div class="container">
+  <h1>Manito</h1>
+  <h3>A Secret Santa Exchange</h3>
+  <form id="login-button" action="/users" method="POST">
+      <input type="email" name="user[email]">
+      <input type="password" name="user[password]">
+      <input type="submit" value="Log In">
+  </form>
+  <form id="signup-button" action="/users/new" method="GET">
+    <input type="submit" value="Register">
+  </form>
+</div>
