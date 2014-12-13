@@ -1,24 +1,35 @@
-get '/users' do
-  # display a list of all users
-  # @users = User.all
-  # erb :'users/index'
-end
+# get '/users' do
+#   # display a list of all users
+#   # @users = User.all
+#   # erb :'users/index'
+# end
 
 get '/users/new' do
   # return an HTML form for creating a new user
-  # erb :'users/new'
+  erb :'users/new'
 end
 
 post '/users' do
-  # create a new user
-  # @user = User.create(params[:user])
-  # redirect '/users'
+  @user = User.create(params[:user])
+  session[:user_id] = @user.id
+  redirect "/users/#{@user.id}"
+end
+
+post '/users/login' do
+  user = User.find_by(email: params[:user][:email])
+  if user && user.authenticate(params[:user][:password])
+    session[:user_id] = user.id
+    redirect "/users/#{user.id}"
+  else
+    session[:error] = "invalid login information"
+    redirect '/'
+  end
 end
 
 get '/users/:id' do |id|
-  # display a specific user
-  # @user = User.find id
-  # erb :'users/single'
+  @user = User.find id
+  @events = @user.events
+  erb :'users/exchanges'
 end
 
 get '/users/:id/edit' do |id|

@@ -5,14 +5,12 @@ get '/events' do
 end
 
 get '/events/new' do
-  # return an HTML form for creating a new event
-  # erb :'events/new'
+  erb :'events/new'
 end
 
 post '/events' do
-  # create a new event
-  # @event = Event.create(params[:event])
-  # redirect '/events'
+  @event = Event.create(params[:event])
+  redirect '/events'
 end
 
 get '/events/:id' do |id|
