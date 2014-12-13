@@ -11,14 +11,13 @@ class User < ActiveRecord::Base
 
   has_many :items, through: :wishlists
 
-  def send_email_invites(email_addresses, message)
+  def send_email_invites(email_addresses, message, key)
     email_addresses.each do |email_address|
       Pony.mail(:to => email_address,
                 :from => self.email,
                 :subject => 'Secret Santa Invite',
+                :html_body => "/#{key}",
                 :body => message)
     end
   end
-
-
 end

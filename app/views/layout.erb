@@ -9,11 +9,15 @@
   <!-- <script type="js/jquery-1.11.1.min.js"></script> -->
   <script src="js/app.js"></script>
 
-  <title>Simple Landing Page</title>
+  <title>Manito</title>
 </head>
 
   <div class="wrapper">
     <body>
+      <% if session[:user_id] %>
+      <a href="/users/logout">logout</a>
+      <% end %>
+
       <%= yield %>
     </body>
   </div>
