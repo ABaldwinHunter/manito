@@ -1,0 +1,19 @@
+<div class="container">
+  <h1>Your Wishlist</h1>
+
+  <div id="wishlits-item-list">
+    <ul>
+      <% @wishlist_items.each do |item| %>
+        <li> <%= item.name %> </li>
+      <% end %>
+    </ul>
+
+  </div>
+
+  <form id="save-button" action="/wishlists" method="GET">
+    <input type="submit" value="Save">
+  </form>
+
+
+
+</div>
