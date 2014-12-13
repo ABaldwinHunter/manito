@@ -10,9 +10,10 @@ get '/items/new' do
 end
 
 post '/items' do
-  # create a new item
-  # @item = Item.create(params[:item])
-  # redirect '/items'
+  user = User.find session[:user_id]
+  wishlist = user.wishlists.first
+  wishlist.items.create(params[:item])
+  redirect '/wishlists'
 end
 
 get '/items/:id' do |id|
