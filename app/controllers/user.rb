@@ -11,7 +11,19 @@ end
 
 post '/users' do
   @user = User.create(params[:user])
+  session[:user_id] = @user.id
   redirect "/users/#{@user.id}"
+end
+
+post '/users/login' do
+  user = User.find_by(email: params[:user][:email])
+  if user && user.authenticate(params[:user][:password])
+    session[:user_id] = user.id
+    redirect "/users/#{user.id}"
+  else
+    session[:error] = "invalid login information"
+    redirect '/'
+  end
 end
 
 get '/users/:id' do |id|
