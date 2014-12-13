@@ -20,10 +20,15 @@
     </table>
   </div>
 
+  <div class="item_add_box">
+    <h2>Add more items</h2>
+    <form id="save-button" action="/items" method="POST">
+      Name: <input type="text" name= "item[name]"><br>
+      URL: <input type="text" name= "item[url]"><br>
+      <input type="submit" value="Add">
+    </form>
+  </div>
 
-  <form id="save-button" action="/wishlists" method="GET">
-    <input type="submit" value="Add">
-  </form>
 
 
 
