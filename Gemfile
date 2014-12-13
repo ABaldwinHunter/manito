@@ -23,3 +23,4 @@ gem 'faker'
 gem 'bcrypt'
 
 gem 'pony'
+gem 'pry'

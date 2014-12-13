@@ -1,0 +1,14 @@
+<div class="container">
+  <h1><%= @event.title %></h1>
+  <h1><%= @event.location %></h1>
+  <h1>Draw date: <%= @event.draw_date%></h1>
+  <h1>Gift exchange date: <%= @event.exchange_date%></h1>
+  <p>Description: <%= @event.description %></p>
+  <p>Contact admin: <%= User.find(@event.admin_id).email %></p>
+
+  <% if current_user.id == @event.admin_id %>
+    <form id="event-page" action="/events/<%= @event.id %>/edit" method="GET">
+      <input type="submit" value="Edit"><br>
+    </form>
+  <% end %>
+</div>

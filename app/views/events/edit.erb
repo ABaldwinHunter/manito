@@ -1,0 +1,38 @@
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script>
+  $(function() {
+    $( ".datepicker" ).datepicker();
+  });
+  </script>
+</head>
+
+
+<div class="container">
+  <h1>New Secret Santa Event</h1>
+  <form id="new-event-form" action="/events/:id/edit" method="POST">
+    <input type="hidden" name="_method" value="PUT">
+    Title: <input type = "text" name= "event[title]" value="<%= @event.title %>"><br>
+
+    Location: <input type = "text" name= "event[location]"  value="<%= @event.location %>"><br>
+
+    Secret Santa Assignment Date: <input type="text" class="datepicker" name="event[draw_date]"> <br>
+
+    Gift Exchange Date: <input type= "text" class="datepicker" name="event[exchange_date]"> <br>
+
+    Description: <textarea name="event[description]" value="<%= @event.description %>"> </textarea><br>
+
+    Maximum Gift Price: <input type = "text" name= "event[max_price]"  value="<%= @event.max_price %>"><br>
+
+    Email List <textarea placeholder= "friend@example.com, someone@someplace.com" name="event[emails]" value="<%= @event.emails %>" ></textarea><br>
+
+    Invite Message <textarea name="event[message]" value="<%= @event.message %>"> </textarea><br>
+    <input type="submit" value="Update and Send notification"><br>
+  </form>
+</div>
+
+<!-- ?#consider adding user feature -->

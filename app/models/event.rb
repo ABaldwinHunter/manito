@@ -1,11 +1,13 @@
+require 'pry'
 class Event < ActiveRecord::Base
-  # belongs_to :admin, class_name: "User", source: :user
   has_many :user_events
   has_many :users, through: :user_events
+  belongs_to :admin, class_name: "User"
 
   before_save :generate_key
 
   def generate_key
+    # binding.pry
     self.invite_key = random
   end
 
