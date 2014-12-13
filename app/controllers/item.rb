@@ -36,7 +36,7 @@ end
 
 delete '/items/:id' do |id|
   # delete a specific item
-  # @item = Item.find id
-  # @item.destroy
-  # redirect '/items'
+  @item = Item.find id
+  @item.destroy
+  redirect '/wishlists'
 end

@@ -1,7 +1,8 @@
 get '/wishlists' do
-  # display a list of all wishlists
-  # @wishlists = Wishlist.all
-  # erb :'wishlists/index'
+  user = User.find session[:user_id]
+  wishlist = user.wishlists.first
+  @wishlist_items = wishlist.items
+  erb :'wishlists/index'
 end
 
 get '/wishlists/new' do
