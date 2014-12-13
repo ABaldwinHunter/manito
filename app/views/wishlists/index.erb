@@ -2,16 +2,27 @@
   <h1>Your Wishlist</h1>
 
   <div id="wishlits-item-list">
-    <ul>
-      <% @wishlist_items.each do |item| %>
-        <li> <%= item.name %> </li>
-      <% end %>
-    </ul>
 
+    <table style="width:70%">
+      <% @wishlist_items.each do |item| %>
+        <tr>
+          <td><%= item.name %></td>
+          <td> <a href="<%= item.url %>"></a> Link </td>
+          <td>
+            <form id="delete-button" action="/items/<%= item.id %>" method="POST">
+              <input type="hidden" name="_method" value="DELETE">
+              <input type="submit" value="Delete">
+            </form>
+          </td>
+        </tr>
+      <% end %>
+
+    </table>
   </div>
 
+
   <form id="save-button" action="/wishlists" method="GET">
-    <input type="submit" value="Save">
+    <input type="submit" value="Add">
   </form>
 
 
