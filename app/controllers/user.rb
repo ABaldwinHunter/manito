@@ -12,7 +12,7 @@ end
 post '/users' do
   @user = User.create(params[:user])
   session[:user_id] = @user.id
-  redirect "/users/#{@user.id}"
+  redirect "/users/#{@user.id}/events"
 end
 
 post '/users/login' do
