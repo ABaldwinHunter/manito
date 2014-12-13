@@ -1,7 +1,10 @@
 <div class="container">
   <h1>Manito</h1>
   <h3>A Secret Santa Exchange</h3>
-  <form id="login-button" action="/users" method="POST">
+
+  <h6><%= display_session_error %></h6>
+
+  <form id="login-button" action="/users/login" method="POST">
       <input type="email" name="user[email]">
       <input type="password" name="user[password]">
       <input type="submit" value="Log In">
