@@ -7,8 +7,13 @@
   <p>Contact admin: <%= User.find(@event.admin_id).email %></p>
 
 <% userevent = UserEvent.find_by(user_id: current_user.id, event_id: @event.id) %>
-<% giftee = User.find(userevent.giftee_id) %>
-  <p>Your giftee: <%= giftee.first_name %> <%= giftee.last_name %></p>
+
+<% if userevent.giftee_id %>
+  <% giftee = User.find(userevent.giftee_id) %>
+    <p>Your giftee: <%= giftee.first_name %> <%= giftee.last_name %></p>
+<% end %>
+
+
 
   <% if current_user.id == @event.admin_id %>
     Joined users:<br>
