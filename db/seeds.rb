@@ -15,4 +15,6 @@ User.all.each do |user|
   10.times{w.items.create(name: Faker::Commerce.product_name, url: "www.fakelink.com/aehgioaghi")}
 end
 
+User.create(first_name: "Ashley", last_name: "Baldwin-Hunter", email: "ashley.baldwinhunter@gmail.com", password: "cat")
+
 
