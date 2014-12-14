@@ -15,30 +15,26 @@
   <title>Manito</title>
 </head>
 
+  <div class="container">
 
 <body>
   <div class="mainbody">
-
     <header>
       <h1>Manito </h1> <h3>Secret Santa Exchange</h3>
       <img src = "/images/santa20.png">
 
-
       <nav role="navigation">
         <ul>
-          <li><a href = "/">Home</a></li>
-
+          <li><a href = "/users/<%=current_user.id%>/events">Home</a></li>
           <% if session[:user_id] %>
             <li><a href = "/wishlists">My Wishlist</a></li>
             <li><a href = "/events">My Exchanges</a></li>
             <li><a href="/users/logout">logout</a></li>
 
           <% end %>
-
         </ul>
       </nav>
     </header>
-
     <%= yield %>
   </div>
 </body>

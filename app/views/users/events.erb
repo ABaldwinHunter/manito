@@ -7,17 +7,13 @@
         <li> <a href="/events/<%= ev.id %>"> <%= ev.title %></a> </li>
       <% end %>
     </ul>
-
   </div>
 
   <p>
     <form id="new-exchange-button" action="/event/new" method="GET">
       <button type="submit">Create New Exchange</button>
     </form>
-
-  </p>
-
-
+    </p>
   <p>
     <form id="search_event" action="/events/search" method="POST">
       Search Event:
@@ -26,15 +22,15 @@
     </form>
   </p>
 
-
-<!--   <form id="search_event" action="/events" method="GET">
-    <input type="search" value="My Wish List">
+<%if current_user.wishlists.empty?%>
+  <form id="wishlist-button" action="/wishlists" method="POST">
+    <button type="submit">Create Wish List</button>
+  </form>
+<% else%>
+  <form id="wishlist-button" action="/wishlists" method="GET">
     <button type="submit">My Wish List</button>
-  </form> -->
-
-<!--   <form id="wishlist-button" action="/wishlists" method="GET">
-    <button type="submit">My Wish List</button>
-  </form> -->
+  </form>
+<% end %>
 
 
 
