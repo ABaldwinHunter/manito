@@ -25,21 +25,21 @@
     </ul>
 
     <form id="event-page" action="/events/<%= @event.id %>/edit" method="GET">
-      <input type="submit" value="Edit"><br>
+      <button type="submit">Edit</button><br>
     </form>
 
     <form id="event-page" action="/events/<%= @event.id %>/assign" method="GET">
-      <input type="submit" value="Assign Secret Santa"><br>
+      <button type="submit">Assign Secret Santa</button><br>
     </form>
 
   <% else %>
     <% if @event.users.include?(current_user) %>
       <form action="/events/<%= @event.id %>/leave" method="GET">
-        <input type="submit" value="Leave the event"><br>
+        <button type="submit">Leave the event</button><br>
       </form>
     <% else %>
       <form action="/events/<%= @event.id %>/join" method="GET">
-        <input type="submit" value="Join"><br>
+        <button type="submit">Join</button><br>
       </form>
     <% end %>
 

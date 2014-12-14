@@ -2,24 +2,48 @@
 
 <html lang="en">
 <head>
-  <link rel="stylesheet" type="text/css" href="css/reset.css">
-  <link rel="stylesheet" type="text/css" href="css/app.css">
+  <link rel="stylesheet" type="text/css" href="/css/app.css">
+  <link href='//fonts.googleapis.com/css?family=Lobster+Two:700,400' rel='stylesheet' type='text/css'>
+  <link href='//fonts.googleapis.com/css?family=Signika:400,700' rel='stylesheet' type='text/css'>
+  <link href='//fonts.googleapis.com/css?family=Dancing+Script' rel='stylesheet' type='text/css'>
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <!-- Comment line above and uncomment line below if working offline -->
   <!-- <script type="js/jquery-1.11.1.min.js"></script> -->
-  <script src="js/app.js"></script>
+  <script src="/js/app.js"></script>
 
   <title>Manito</title>
 </head>
 
-  <div class="wrapper">
-    <body>
-      <% if session[:user_id] %>
-      <a href="/users/logout">logout</a>
-      <% end %>
-      <a href="/">Home</a>
 
+
+
+
+  <div class="container">
+    <header>
+      <h1>Manito </h1> <h3>Secret Santa Exchange</h3>
+      <!-- <img src = "/img/myphoto.jpg"> -->
+
+
+      <nav role="navigation">
+        <ul>
+          <li><a href = "/">Home</a></li>
+
+          <% if session[:user_id] %>
+            <li><a href = "/wishlists">My Wishlist</a></li>
+            <li><a href = "/events">My Exchanges</a></li>
+            <li><a href="/users/logout">logout</a></li>
+
+          <% end %>
+
+        </ul>
+      </nav>
+    </header>
+
+
+
+
+    <body>
       <%= yield %>
     </body>
   </div>

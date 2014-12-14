@@ -11,7 +11,7 @@
           <td>
             <form id="delete-button" action="/items/<%= item.id %>" method="POST">
               <input type="hidden" name="_method" value="DELETE">
-              <input type="submit" value="Delete">
+              <button type="submit">Delete</button>
             </form>
           </td>
         </tr>
@@ -25,7 +25,7 @@
     <form id="save-button" action="/items" method="POST">
       Name: <input type="text" name= "item[name]"><br>
       URL: <input type="text" name= "item[url]"><br>
-      <input type="submit" value="Add">
+      <button type="submit">Add</button>
     </form>
   </div>
 
