@@ -16,6 +16,8 @@ h1{
   padding-top: 20px;
   font-family: 'Lobster Two', "Lucida Sans Unicode", "Lucida Grande", 'Pacifico', sans-serif;
   /*display: inline-block;*/
+  max-width: 45%;
+  margin: 0 auto;
 }
 
 h2{
@@ -27,6 +29,8 @@ h3{
   font-family: 'Dancing Script', cursive;
   font-size: 1.8em;
   color: rgba(189, 195, 199,1.0);
+  max-width: 45%;
+  margin: 0 auto;
 }
 
 nav{
@@ -84,9 +88,9 @@ header{
 }
 
 header img{
-  position: fixed;
-  top: 8%;
-  right: 30%;
+ position: absolute;
+  top: 7%;
+  right: 31%;
 }
 
 a{
