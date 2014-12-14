@@ -56,6 +56,9 @@ nav ul a:hover{
 textarea{
   height: 87px;
   width: 521px;
+  font-size: 1.5em;
+  font-family: 'Signika', "Trebuchet MS", "Helvetica", 'Yanone Kaffeesatz', "sans-serif";
+  margin: 19px;
 }
 
 a{
