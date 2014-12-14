@@ -1,0 +1,46 @@
+<div class="container">
+  <h1><%= @event.title %></h1>
+  <h1><%= @event.location %></h1>
+  <h1>Draw date: <%= @event.draw_date%></h1>
+  <h1>Gift exchange date: <%= @event.exchange_date%></h1>
+  <p>Description: <%= @event.description %></p>
+  <p>Contact admin: <%= User.find(@event.admin_id).email %></p>
+
+<% userevent = UserEvent.find_by(user_id: current_user.id, event_id: @event.id) %>
+
+<% if userevent.giftee_id %>
+  <% giftee = User.find(userevent.giftee_id) %>
+    <p>Your giftee: <%= giftee.first_name %> <%= giftee.last_name %></p>
+<% end %>
+
+
+
+  <% if current_user.id == @event.admin_id %>
+    Joined users:<br>
+    <ul>
+      <% @event.users.each do |user| %>
+        <li><%= user.first_name %> <%= user.last_name %></li>
+      <% end %>
+    </ul>
+
+    <form id="event-page" action="/events/<%= @event.id %>/edit" method="GET">
+      <input type="submit" value="Edit"><br>
+    </form>
+
+    <form id="event-page" action="/events/<%= @event.id %>/assign" method="GET">
+      <input type="submit" value="Assign Secret Santa"><br>
+    </form>
+
+  <% else %>
+    <% if @event.users.include?(current_user) %>
+      <form action="/events/<%= @event.id %>/leave" method="GET">
+        <input type="submit" value="Leave the event"><br>
+      </form>
+    <% else %>
+      <form action="/events/<%= @event.id %>/join" method="GET">
+        <input type="submit" value="Join"><br>
+      </form>
+    <% end %>
+
+  <% end %>
+</div>
