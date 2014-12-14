@@ -1,33 +1,6 @@
-<!-- <div class="container">
-  <h1>Welcome to Manito! To get started, go ahead and add items to our wishlist!</h1>
 
-  <h1><%= @user.first_name %>'s List</h1>
-
-  <div id="wishlist-item-list">
-
-    <table style="width:70%">
-      <% @wishlist_items.each do |item| %>
-        <tr>
-          <td><%= item.name %></td>
-          <td> <a href="<%= item.url %>">Link</a></td>
-          <td>
-            <form id="delete-button" action="/items/<%= item.id %>" method="POST">
-              <input type="hidden" name="_method" value="DELETE">
-              <button type="submit">Delete</button>
-            </form>
-          </td>
-        </tr>
-      <% end %>
-
-    </table>
-  </div>
-
-  <div class="item_add_box">
-    <h2>Add more items</h2>
-    <form id="save-button" action="/items" method="POST">
-      Name: <input type="text" name= "item[name]"><br>
-      URL: <input type="text" name= "item[url]"><br>
-      <button type="submit">Add</button>
-    </form>
-  </div>
-</div> -->
+<div class="container">
+<form id="wishlist-button" action="/wishlists" method="POST">
+    <button type="submit">Create Wish List</button>
+</form>
+</div>

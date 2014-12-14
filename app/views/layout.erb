@@ -25,12 +25,13 @@
 
       <nav role="navigation">
         <ul>
-          <li><a href = "/users/<%=current_user.id%>/events">Home</a></li>
           <% if session[:user_id] %>
+            <li><a href = "/users/<%=current_user.id%>/events">Home</a></li>
             <li><a href = "/wishlists">My Wishlist</a></li>
-            <li><a href = "/events">My Exchanges</a></li>
+            <li><a href = "/users/<%=current_user.id%>/events">My Exchanges</a></li>
             <li><a href="/users/logout">logout</a></li>
-
+          <% else %>
+            <li><a href = "/">Home</a></li>
           <% end %>
         </ul>
       </nav>

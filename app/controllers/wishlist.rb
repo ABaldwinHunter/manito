@@ -1,8 +1,12 @@
 get '/wishlists' do
-  @user = User.find session[:user_id]
-  wishlist = @user.wishlists.first
-  @wishlist_items = wishlist.items
-  erb :'wishlists/index'
+  if !current_user.wishlists.empty?
+    wishlist = current_user.wishlists.first
+    @wishlist_items = wishlist.items
+    erb :'wishlists/index'
+  else
+    erb :'wishlists/new'
+  end
+
 end
 
 post '/wishlists' do

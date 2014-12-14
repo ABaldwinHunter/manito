@@ -84,9 +84,9 @@ header{
 }
 
 header img{
-  position: absolute;
-  top: 25px;
-  right: 20%;
+  position: fixed;
+  top: 8%;
+  right: 30%;
 }
 
 a{
