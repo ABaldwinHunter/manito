@@ -1,15 +1,16 @@
 html{
-  background-color: #F5FFFA;
+  background-color: white;
   position: relative;
 }
 body {
   margin:0;
   padding:0;
   height:100%;
-  font-family: 'Signika', "Trebuchet MS", Helvetica, 'Yanone Kaffeesatz', sans-serif;
+  font-family: 'Signika', "Trebuchet MS", "Helvetica", 'Yanone Kaffeesatz', "sans-serif";
 
 }
 h1{
+  color: rgba(236, 240, 241,1.0);
   margin:0;
   font-size: 4em;
   padding-top: 20px;
@@ -19,6 +20,7 @@ h1{
 h3{
   font-family: 'Dancing Script', cursive;
   font-size: 1.8em;
+  color: rgba(189, 195, 199,1.0);
 }
 
 nav{
@@ -27,7 +29,7 @@ nav{
   margin: auto;
 }
 nav li a{
-  color: rgba(44, 62, 80,1.0);
+  color: rgba(236, 240, 241,1.0);
 }
 
 nav ul li{
@@ -51,13 +53,18 @@ nav ul a:hover{
   color: rgba(192, 57, 43,1.0);
 }
 
+textarea{
+  height: 87px;
+  width: 521px;
+}
+
 a{
   text-decoration: none;
 }
 
 header{
   text-align:center;
-  background-color: white;
+  background-color: rgba(44, 62, 80,1.0);
   margin: 10px;
   height: 240px;
   border-bottom: 2px solid #B0C4DE;
@@ -65,17 +72,40 @@ header{
 
 header img{
   position: absolute;
-  top: 10px;
-  right: 6%;
+  top: 25px;
+  right: 20%;
 }
 
 a{
   text-decoration: none;
 }
+.mainbody {
+  margin: 20px auto;
+  width: 80%;
+  padding: 0px 20px 20px 20px;
+}
 
-#main{
-  min-height:100%;
-  position:relative;
+.container {
+  padding: 10px 50px 10px 50px;
+  margin: 0;
+  width: 80%;
+}
+
+.container ul {
+  display: inline-block;
+  margin: 0 auto 0 auto;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.container ul li{
+  margin: 0;
+  padding: 0;
+}
+
+.signup-button{
+  align: center;
 }
 
 #search{
@@ -83,54 +113,18 @@ a{
   left: 20px;
 }
 
-
-#introwords{
-  width: 70%;
-  margin-right: auto;
-  margin-left: auto;
-  font-family: "Coming Soon", "Comic Sans MS", "Comic Sans MS", sans-serif;
-  font-size: 25px;
-  color: #708090;
-  padding-bottom: 350px;
+input {
+  line-height: 1em;
+  font-size: 1.5em;
+  font-family: 'Signika', "Trebuchet MS", "Helvetica", 'Yanone Kaffeesatz', "sans-serif";
+  margin: 19px;
 }
 
-#aboutmecontent{
-  width: 70%;
-  margin-right: auto;
-  margin-left: auto;
-  font-family: "Coming Soon", "Comic Sans MS", "Comic Sans MS", sans-serif;
-  font-size: 15px;
-  color: #708090;
-  padding-bottom: 350px;
+form {
+  width: 300px;
+  margin: 0 auto;
 }
 
-.portfolio{
-  width: 40%;
-  margin-right: auto;
-  margin-left: auto;
-
-  font-size: 15px;
-  color: #708090;
-  padding-bottom: 350px;
-}
-.entries li a{
-  font-family: "Coming Soon", "Comic Sans MS", "Comic Sans MS", sans-serif;
-  color: #4682B4;
-}
-.entries li a:hover{
-  color: #FF69B4;
-}
-
-
-#cheatsheet{
-  width: 80%;
-  margin-right: auto;
-  margin-left: auto;
-  font-family: "Coming Soon", "Comic Sans MS", "Comic Sans MS", sans-serif;
-  font-size: 25px;
-  color: #708090;
-  padding-bottom: 200px;
-}
 
 table{
   border-spacing: 0px;
@@ -184,53 +178,4 @@ button:hover {
   height: 250px;
   width: 100%;
 
-}
-
-.footer{
-  position: relative;
-  display: inline-block;
-
-  border: 1px solid #B0C4DE;
-  border-left: 4px solid #ADD8E6;
-  padding-left: 30px;
-  width: 25%;
-}
-
-
-
-
-#footerCont .footer ul li, #footerCont .footer ol li{
-  display: block;
-  text-align: left;
-
-}
-
-#footerCont .footer ul li a, #footerCont .footer ol li a{
-  color: #4682B4;
-  font-family: 'Maven Pro', 'Coming Soon',"Comic Sans MS", sans-serif;
-}
-#footerCont .footer ul li a:hover, #footerCont .footer ol li a:hover{
-  color: #FF69B4;
-}
-
-#footerCont .footer h3{
-  font-family: 'Coming Soon',"Comic Sans MS", sans-serif;
-  color:#4682B4;
-}
-
-
-
-
-#footerCont .footer ol{
-  counter-reset: li;
-}
-
-#footerCont .footer ol > li:before {
-  position: relative;
-  right: 10px;
-  content: counter(li);
-  counter-increment: li;
-  font-family: 'Maven Pro', 'Coming Soon',"Comic Sans MS", sans-serif;
-  color:#FF69B4;
-  font-size: 20px;
 }
