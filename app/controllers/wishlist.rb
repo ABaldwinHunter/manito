@@ -5,11 +5,6 @@ get '/wishlists' do
   erb :'wishlists/index'
 end
 
-# get '/wishlists/new' do
-#   @user = current_user
-#   erb :'wishlists/index'
-# end
-
 post '/wishlists' do
   @user = current_user
   @user.wishlists.create
