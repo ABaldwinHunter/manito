@@ -19,6 +19,24 @@ post '/events' do
 end
 
 
+
+get '/events/search' do
+  @event = Event.find_by(invite_key: params[:invite_key])
+  redirect("/events/#{@event.id}")
+end
+
+get '/events/:id/leave' do
+  userevent = UserEvent.find_by(user_id: current_user.id, event_id: params[:id])
+  userevent.destroy
+  redirect("/users/#{current_user.id}/events")
+end
+
+get '/events/:id/join' do
+  @event = Event.find(params[:id])
+  @event.users << current_user
+  redirect("/events/#{@event.id}")
+end
+
 get '/events/:id' do
   @event = Event.find(params[:id])
   erb :'events/single'
@@ -34,3 +52,6 @@ put '/events/:id' do
   @event.update(params[:event])
   redirect("/events/#{@event.id}")
 end
+
+
+

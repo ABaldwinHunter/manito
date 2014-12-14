@@ -14,7 +14,7 @@
 
 <div class="container">
   <h1>New Secret Santa Event</h1>
-  <form id="new-event-form" action="/events/:id/edit" method="POST">
+  <form id="new-event-form" action="/events/<%= @event.id %>" method="POST">
     <input type="hidden" name="_method" value="PUT">
     Title: <input type = "text" name= "event[title]" value="<%= @event.title %>"><br>
 
