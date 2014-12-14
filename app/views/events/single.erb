@@ -11,7 +11,7 @@
 <% if userevent %>
   <% if userevent.giftee_id %>
     <% giftee = User.find(userevent.giftee_id) %>
-      <p>Your giftee: <%= giftee.first_name %> <%= giftee.last_name %></p>
+      <p>Your giftee: <a href="/wishlists/<%= giftee.id %>"><%= giftee.first_name %> <%= giftee.last_name %></a></p>
   <% end %>
 <% end %>
 
