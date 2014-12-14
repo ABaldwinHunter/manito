@@ -6,7 +6,6 @@ end
 post '/events' do
   user = User.find(session[:user_id])
   @event = Event.new(params[:event])
-  p params
   @event.admin_id = current_user.id
   @event.save
   user.events << @event
@@ -16,13 +15,10 @@ post '/events' do
   key = @event.invite_key
   current_user.send_email_invites(emails_list, message, key)
   redirect "/users/#{current_user.id}/events"
-
 end
 
-
-
-get '/events/search' do
-  @event = Event.find_by(invite_key: params[:invite_key])
+post '/events/search' do
+  @event = Event.find_by(invite_key: params[:event][:invite_key])
   redirect("/events/#{@event.id}")
 end
 
@@ -32,7 +28,7 @@ get '/events/:id/leave' do
   redirect("/users/#{current_user.id}/events")
 end
 
-get '/events/:id/join' do
+get '/events/:id/join' do #how do we make sure s
   @event = Event.find(params[:id])
   @event.users << current_user
   redirect("/users/#{current_user.id}/events")
@@ -61,7 +57,6 @@ get '/events/:id/assign' do
     userevent = UserEvent.find_by(user_id: userid, event_id: params[:id])
     userevent.giftee_id = participants[index-1]
     userevent.save
-    binding.pry
   end
   redirect("/events/#{@event.id}")
 end

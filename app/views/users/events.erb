@@ -5,9 +5,10 @@
   </form>
 
 
-  <form id="search_event" action="/events/search" method="GET">
+  <form id="search_event" action="/events/search" method="POST">
     Search Event:
-    <input type="search" name="invite_key">
+    <input type="text" name="event[invite_key]">
+    <input type="submit" value="search">
   </form>
 
 <!--   <form id="search_event" action="/events" method="GET">

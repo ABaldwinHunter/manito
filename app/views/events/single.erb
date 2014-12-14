@@ -8,11 +8,12 @@
 
 <% userevent = UserEvent.find_by(user_id: current_user.id, event_id: @event.id) %>
 
-<% if userevent.giftee_id %>
-  <% giftee = User.find(userevent.giftee_id) %>
-    <p>Your giftee: <%= giftee.first_name %> <%= giftee.last_name %></p>
+<% if userevent %>
+  <% if userevent.giftee_id %>
+    <% giftee = User.find(userevent.giftee_id) %>
+      <p>Your giftee: <%= giftee.first_name %> <%= giftee.last_name %></p>
+  <% end %>
 <% end %>
-
 
 
   <% if current_user.id == @event.admin_id %>
