@@ -1,4 +1,13 @@
 require 'pry'
+
+before '/events/*' do
+  signed_in!
+end
+
+before '/events/:id*' do
+  @event = Event.find(params[:id])
+end
+
 get '/events/new' do
   erb :'events/new'
 end
@@ -29,29 +38,24 @@ get '/events/:id/leave' do
 end
 
 get '/events/:id/join' do #how do we make sure s
-  @event = Event.find(params[:id])
   @event.users << current_user
   redirect("/users/#{current_user.id}/events")
 end
 
 get '/events/:id' do
-  @event = Event.find(params[:id])
   erb :'events/single'
 end
 
 get '/events/:id/edit' do
-  @event = Event.find(params[:id])
   erb :'events/edit'
 end
 
 put '/events/:id' do
-  @event = Event.find(params[:id])
   @event.update(params[:event])
   redirect("/events/#{@event.id}")
 end
 
 get '/events/:id/assign' do
-  @event = Event.find(params[:id])
   participants = @event.users.map{|u|u.id}
   participants.each_with_index do |userid, index|
     userevent = UserEvent.find_by(user_id: userid, event_id: params[:id])
