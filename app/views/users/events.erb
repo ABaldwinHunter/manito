@@ -4,7 +4,6 @@
     <button type="submit">Create New Exchange</button>
   </form>
 
-
   <form id="search_event" action="/events/search" method="POST">
     Search Event:
     <input type="text" name="event[invite_key]">
@@ -16,9 +15,15 @@
     <button type="submit">My Wish List</button>
   </form> -->
 
+<%if current_user.wishlists.empty?%>
+  <form id="wishlist-button" action="/wishlists" method="POST">
+    <button type="submit">Create Wish List</button>
+  </form>
+<% else%>
   <form id="wishlist-button" action="/wishlists" method="GET">
     <button type="submit">My Wish List</button>
   </form>
+<% end %>
 
   <div id="exchange-list">
     <ul>

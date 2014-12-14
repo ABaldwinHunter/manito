@@ -8,12 +8,6 @@ post '/items' do
 end
 
 
-get '/items/:id/edit' do |id|
-  # return an HTML form for editing a item
-  # @item = Item.find id
-  # erb :'items/edit'
-end
-
 put '/items/:id' do |id|
   redirect 'entries/#{@item.id}'
 end

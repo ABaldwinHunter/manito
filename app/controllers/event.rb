@@ -8,7 +8,7 @@ before '/events/:id*' do
   @event = Event.find(params[:id])
 end
 
-get '/events/new' do
+get '/event/new' do
   erb :'events/new'
 end
 
