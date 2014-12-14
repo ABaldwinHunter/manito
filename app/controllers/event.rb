@@ -1,3 +1,4 @@
+require 'pry'
 get '/events/new' do
   erb :'events/new'
 end
@@ -34,7 +35,7 @@ end
 get '/events/:id/join' do
   @event = Event.find(params[:id])
   @event.users << current_user
-  redirect("/events/#{@event.id}")
+  redirect("/users/#{current_user.id}/events")
 end
 
 get '/events/:id' do
@@ -50,6 +51,18 @@ end
 put '/events/:id' do
   @event = Event.find(params[:id])
   @event.update(params[:event])
+  redirect("/events/#{@event.id}")
+end
+
+get '/events/:id/assign' do
+  @event = Event.find(params[:id])
+  participants = @event.users.map{|u|u.id}
+  participants.each_with_index do |userid, index|
+    userevent = UserEvent.find_by(user_id: userid, event_id: params[:id])
+    userevent.giftee_id = participants[index-1]
+    userevent.save
+    binding.pry
+  end
   redirect("/events/#{@event.id}")
 end
 
