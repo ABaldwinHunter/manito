@@ -1,6 +1,15 @@
 <div class="container">
   <h2>Exchanges</h2>
 
+  <div id="exchange-list">
+    <ul>
+      <% @events.each do |ev| %>
+        <li> <a href="/events/<%= ev.id %>"> <%= ev.title %></a> </li>
+      <% end %>
+    </ul>
+
+  </div>
+
   <p>
     <form id="new-exchange-button" action="/event/new" method="GET">
       <button type="submit">Create New Exchange</button>
@@ -27,13 +36,6 @@
     <button type="submit">My Wish List</button>
   </form> -->
 
-  <div id="exchange-list">
-    <ul>
-      <% @events.each do |ev| %>
-        <li> <a href="/events/<%= ev.id %>"> <%= ev.title %></a> </li>
-      <% end %>
-    </ul>
 
-  </div>
 
 </div>

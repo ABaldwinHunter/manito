@@ -1,24 +1,28 @@
 <div class="container">
-  <h1><%= @event.title %></h1>
-  <h1><%= @event.location %></h1>
-  <h1>Draw date: <%= @event.draw_date%></h1>
-  <h1>Gift exchange date: <%= @event.exchange_date%></h1>
-  <p>Description: <%= @event.description %></p>
-  <p>Contact admin: <%= User.find(@event.admin_id).email %></p>
+  <h2><%= @event.title %></h2>
+  <ul class="eventinfo">
+    <li><%= @event.location %></li>
+    <li>Draw date: <%= @event.draw_date%></li>
+    <li>Gift exchange date: <%= @event.exchange_date%></li>
+    <li>Description: <%= @event.description %></li>
+    <li>Contact admin: <%= User.find(@event.admin_id).email %></li>
+
+  </ul>
+
 
 <% userevent = UserEvent.find_by(user_id: current_user.id, event_id: @event.id) %>
 
 <% if userevent %>
   <% if userevent.giftee_id %>
     <% giftee = User.find(userevent.giftee_id) %>
-      <p>Your giftee: <%= giftee.first_name %> <%= giftee.last_name %></p>
+      <h2>Your giftee: <%= giftee.first_name %> <%= giftee.last_name %></h2>
   <% end %>
 <% end %>
 
 
   <% if current_user.id == @event.admin_id %>
-    Joined users:<br>
-    <ul>
+    <h2>Joined users:</h2> <br>
+    <ul class="eventinfo">
       <% @event.users.each do |user| %>
         <li><%= user.first_name %> <%= user.last_name %></li>
       <% end %>
