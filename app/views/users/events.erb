@@ -1,23 +1,23 @@
 <div class="container">
-  <h1>Exchanges</h1>
+  <h2>Exchanges</h2>
   <form id="new-exchange-button" action="/events/new" method="GET">
-    <input type="submit" value="Create New Exchange">
+    <button type="submit">Create New Exchange</button>
   </form>
 
 
   <form id="search_event" action="/events/search" method="POST">
     Search Event:
     <input type="text" name="event[invite_key]">
-    <input type="submit" value="search">
+    <button type="submit">search</button>
   </form>
 
 <!--   <form id="search_event" action="/events" method="GET">
     <input type="search" value="My Wish List">
-    <input type="submit" value="My Wish List">
+    <button type="submit">My Wish List</button>
   </form> -->
 
   <form id="wishlist-button" action="/wishlists" method="GET">
-    <input type="submit" value="My Wish List">
+    <button type="submit">My Wish List</button>
   </form>
 
   <div id="exchange-list">
