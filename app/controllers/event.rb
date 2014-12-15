@@ -20,9 +20,12 @@ post '/events' do
   user.events << @event
   user.save
   emails_list = parse_emails( params[:event][:emails] )
-  message = params[:event][:message]
+  # message = params[:event][:message]
   key = @event.invite_key
-  current_user.send_email_invites(emails_list, message, key)
+  sender = current_user.email
+  draw_date = @event.draw_date
+  admin = "#{current_user.first_name} #{current_user.last_name}"
+  current_user.send_email_invites(emails_list, sender, draw_date, admin, key)
   redirect "/users/#{current_user.id}/events"
 end
 
