@@ -19,5 +19,5 @@ get '/wishlists/:id' do |id| #see someone else's wishlist
   @user = User.find id
   wishlist = @user.wishlists.first
   @wishlist_items = wishlist.items
-  erb :'wishlists/index'
+  erb :'wishlists/secret_santa_list'
 end
