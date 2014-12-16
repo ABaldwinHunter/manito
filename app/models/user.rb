@@ -16,7 +16,17 @@ class User < ActiveRecord::Base
       Pony.mail(:to => email_address,
                 :from => sender,
                 :subject => 'Secret Santa Invite',
-                :html_body => "Congratulations! You have been invited to participate in Manito's Secret Santa exchange, hosted by #{admin}! You may register or login at <a href='https://thawing-fortress-5755.herokuapp.com'>Manito Secret Santa Exchange</a>, and find your event using the secret key: #{key}. Max price is $#{max}. Don't forget to sign up by #{draw_date} to participate!")  
+                :html_body => "Congratulations! You have been invited to participate in Manito's Secret Santa exchange, hosted by #{admin}! You may register or login at <a href='https://thawing-fortress-5755.herokuapp.com'>Manito Secret Santa Exchange</a>, and find your event using the secret key: #{key}. Max price is $#{max}. Don't forget to sign up by #{draw_date} to participate!"
+                :via => :smtp, 
+                :via_options => {
+                  :address        => 'smtp.sendgrid.net',
+                  :port           => '587',
+                  :enable_starttls_auto => true,
+                  :user_name      => ENV['SENDGRID_USERNAME'],
+                  :password       => ENV['SENDGRID_PASSWORD'],
+                  :authentication => :plain,
+                  :domain         => 'heroku.com'
+    })  
     end
   end
 end
