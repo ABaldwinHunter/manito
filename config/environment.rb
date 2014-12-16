@@ -44,22 +44,18 @@ configure do
   #         :enable_starttls_auto => true
   # } 
 
-   email_options, {      
-    :from => "noreply@midas.heroku.com",
-    :via => :smtp,
+  Pony.options = {
+    :via => :smtp, 
     :via_options => {
-      :address => 'smtp.sendgrid.net',
-      :port => '587',
-      :domain => 'heroku.com',
-      :user_name => ENV['SENDGRID_USERNAME'],
-      :password => ENV['SENDGRID_PASSWORD'],
+      :address        => 'smtp.sendgrid.net',
+      :port           => '587',
+      :enable_starttls_auto => true,
+      :user_name      => ENV['SENDGRID_USERNAME'],
+      :password       => ENV['SENDGRID_PASSWORD'],
       :authentication => :plain,
-      :enable_starttls_auto => true
-    },
+      :domain         => 'heroku.com'
+    }
   }
-end
-
-Pony.options = settings.email_options
 
   # By default, Sinatra assumes that the root is the file that calls the configure block.
   # Since this is not the case for us, we set it manually.
@@ -78,7 +74,9 @@ Pony.options = settings.email_options
       end
     end
   end
+
 end
+
 
 # Set up the controllers and helpers
 Dir[APP_ROOT.join('app', 'controllers', '*.rb')].each { |file| require file }
