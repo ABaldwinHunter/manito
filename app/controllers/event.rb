@@ -30,10 +30,16 @@ post '/events', auth: :user do
   redirect "/users/#{current_user.id}/events"
 end
 
+# post '/events/search', auth: :user do
+#   @event = Event.find_by(invite_key: params[:event][:invite_key])
+#   redirect("/events/#{@event.id}")
+# end
+
 post '/events/search', auth: :user do
   @event = Event.find_by(invite_key: params[:event][:invite_key])
   redirect("/events/#{@event.id}")
 end
+
 
 get '/events/:id/leave', auth: :user do
   @event = Event.find(params[:id])
@@ -72,8 +78,20 @@ get '/events/:id/assign', auth: :user do
     userevent.giftee_id = participants[index-1]
     userevent.save
   end
-  redirect("/events/#{@event.id}")
+  erb(:'/events/_giftee', :layout => false)
 end
 
 
-
+# get '/events/:id/assign', auth: :user do
+#   @event = Event.find(params[:id])
+#   participants = @event.users.map{|u|u.id}
+#   participants.each_with_index do |userid, index|
+#     userevent = UserEvent.find_by(user_id: userid, event_id: params[:id])
+#     userevent.giftee_id = participants[index-1]
+#     userevent.save
+#   end
+#   @giftee = User.find(1)
+#   erb(:'/events/_giftee', :layout => false)
+#   # content_type :json
+#   # {name: @giftee.first_name, lname: @giftee.last_name}.to_json
+# end

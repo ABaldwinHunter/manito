@@ -1,7 +1,7 @@
 <div class="container">
   <h2><%= @event.title %></h2>
   <ul class="eventinfo">
-    <li><%= @event.location %></li>
+    <li>@<%= @event.location %></li>
     <li>Draw date: <%= @event.draw_date%></li>
     <li>Gift exchange date: <%= @event.exchange_date%></li>
     <li>Description: <%= @event.description %></li>
@@ -9,14 +9,19 @@
 
   </ul>
 
-<% userevent = UserEvent.find_by(user_id: current_user.id, event_id: @event.id) %>
 
-<% if userevent %>
-  <% if userevent.giftee_id %>
-    <% giftee = User.find(userevent.giftee_id) %>
-    <h2>Your giftee: <a href="/wishlists/<%= giftee.id %>"><%= giftee.first_name %> <%= giftee.last_name %></a></h2>
+
+
+
+ <div class="giftee">
+  <% userevent = UserEvent.find_by(user_id: current_user.id, event_id: @event.id) %>
+  <% if userevent %>
+    <% if userevent.giftee_id %>
+      <% giftee = User.find(userevent.giftee_id) %>
+      <h2>Your giftee: <a href="/wishlists/<%= giftee.id %>"><%= giftee.first_name %> <%= giftee.last_name %></a></h2>
+    <% end %>
   <% end %>
-<% end %>
+</div>
 
   <% if current_user.id == @event.admin_id %>
     <h2>Joined users:</h2> <br>
@@ -30,8 +35,8 @@
       <button type="submit">Edit</button><br>
     </form>
 
-    <form id="event-page" action="/events/<%= @event.id %>/assign" method="GET">
-      <button type="submit">Assign Secret Santa</button><br>
+    <form id="assign-ss" action="/events/<%= @event.id %>/assign" method="GET">
+      <button id="assign-ss-button" type="submit">Assign Secret Santa</button><br>
     </form>
 
   <% else %>
