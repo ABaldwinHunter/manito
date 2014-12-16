@@ -1,4 +1,4 @@
-get '/wishlists' do
+get '/wishlists', auth: :user do
   if !current_user.wishlists.empty?
     wishlist = current_user.wishlists.first
     @wishlist_items = wishlist.items
@@ -6,18 +6,21 @@ get '/wishlists' do
   else
     erb :'wishlists/new'
   end
-
 end
 
-post '/wishlists' do
+post '/wishlists', auth: :user do
   @user = current_user
   @user.wishlists.create
   redirect '/wishlists'
 end
 
-get '/wishlists/:id' do |id| #see someone else's wishlist
+get '/wishlists/:id', auth: :user do |id| #see someone else's wishlist
   @user = User.find id
   wishlist = @user.wishlists.first
-  @wishlist_items = wishlist.items
-  erb :'wishlists/secret_santa_list'
+  if @user.wishlists.empty?
+    erb :'wishlists/secret_santa_no_wishlist'
+  else
+    @wishlist_items = wishlist.items
+    erb :'wishlists/secret_santa_list'
+  end
 end

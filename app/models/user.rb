@@ -11,12 +11,12 @@ class User < ActiveRecord::Base
 
   has_many :items, through: :wishlists
 
-  def send_email_invites(email_addresses, sender, draw_date, admin, key)
+  def send_email_invites(email_addresses, sender, draw_date, admin, key, max)
     email_addresses.each do |email_address|
       Pony.mail(:to => email_address,
                 :from => sender,
                 :subject => 'Secret Santa Invite',
-                :html_body => "Congratulations! You have been invited to participate in Manito's Secret Santa exchange, hosted by #{admin}! You may register or login at <a href='http://localhost:9393/'>Manito Secret Santa Exchange</a>, and find your event using the secret key: #{key}. Don't forget to sign up by #{draw_date} to participate!")
+                :html_body => "Congratulations! You have been invited to participate in Manito's Secret Santa exchange, hosted by #{admin}! You may register or login at <a href='https://thawing-fortress-5755.herokuapp.com'>Manito Secret Santa Exchange</a>, and find your event using the secret key: #{key}. Max price is $#{{max}. Don't forget to sign up by #{draw_date} to participate!")
     end
   end
 end

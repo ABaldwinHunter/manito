@@ -4,7 +4,7 @@ class Event < ActiveRecord::Base
   has_many :users, through: :user_events
   belongs_to :admin, class_name: "User"
 
-  before_save :generate_key
+  before_create :generate_key
 
   def generate_key
     # binding.pry
