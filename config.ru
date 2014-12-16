@@ -10,6 +10,16 @@ configure do
 
   # Set the views to
   set :views, File.join(Sinatra::Application.root, "app", "views")
+
+  # set :root, APP_ROOT.to_path
+
+	register do
+    	def auth(type)
+      		condition do
+        redirect ('/') unless send("current_#{type}")
+      		end
+    	end
+  	end
 end
 
 run Sinatra::Application

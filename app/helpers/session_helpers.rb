@@ -19,3 +19,9 @@ def authorize_owner!(object, &block)
     block.call!
   end
 end
+
+# def auth(type)
+#     condition do
+#     redirect ('/') unless send("current_#{type}")
+#   	end
+#  end
