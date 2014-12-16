@@ -16,10 +16,10 @@ end
 
 get '/wishlists/:id', auth: :user do |id| #see someone else's wishlist
   @user = User.find id
-  wishlist = @user.wishlists.first
   if @user.wishlists.empty?
     erb :'wishlists/secret_santa_no_wishlist'
   else
+    wishlist = @user.wishlists.first
     @wishlist_items = wishlist.items
     erb :'wishlists/secret_santa_list'
   end
