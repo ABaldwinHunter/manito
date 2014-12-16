@@ -5,7 +5,11 @@
         <% @wishlist_items.each do |item| %>
           <tr>
             <td><%= item.name %></td>
-            <td> <a href="<%= item.url %>">Link</a></td>
+            <td>
+              <% if item.url %>
+                <a href="<%= item.url %>">Link</a>
+              <% end %>
+            </td>
             <td>
               <form id="delete-button" action="/items/<%= item.id %>" method="POST">
                 <input type="hidden" name="_method" value="DELETE">
