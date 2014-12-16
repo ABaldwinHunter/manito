@@ -6,7 +6,7 @@
           <tr>
             <td><%= item.name %></td>
             <td>
-              <% if item.url %>
+              <% if item.url != "" %>
                 <a href="<%= item.url %>">Link</a>
               <% end %>
             </td>
