@@ -29,6 +29,38 @@ APP_ROOT = Pathname.new(File.expand_path('../../', __FILE__))
 APP_NAME = APP_ROOT.basename.to_s
 
 configure do
+
+  # config.action_mailer.raise_delivery_errors = true
+  # config.action_mailer.delivery_method = :smtp
+  # host = 'https://thawing-fortress-5755.herokuapp.com'
+  # config.action_mailer.default_url_options = {host: host} 
+  # ActionMailer::Base.smtp_settings = {
+  #         :address        => 'smtp.sendgrid.net',
+  #         :port           => '587',
+  #         :authentication => :plain,
+  #         :user_name      => ENV['SENDGRID_USERNAME'],
+  #         :password       => ENV['SENDGRID_PASSWORD'],
+  #         :domain         => 'heroku.com',
+  #         :enable_starttls_auto => true
+  # } 
+
+   email_options, {      
+    :from => "noreply@midas.heroku.com",
+    :via => :smtp,
+    :via_options => {
+      :address => 'smtp.sendgrid.net',
+      :port => '587',
+      :domain => 'heroku.com',
+      :user_name => ENV['SENDGRID_USERNAME'],
+      :password => ENV['SENDGRID_PASSWORD'],
+      :authentication => :plain,
+      :enable_starttls_auto => true
+    },
+  }
+end
+
+Pony.options = settings.email_options
+
   # By default, Sinatra assumes that the root is the file that calls the configure block.
   # Since this is not the case for us, we set it manually.
   set :root, APP_ROOT.to_path
