@@ -21,6 +21,7 @@ $(document).ready(function () {
     }).success(function(response){
       console.log(response)
       $('.giftee').html(response)
+      $('#assign-ss-button').html('ReAssign Secret Santa')
     })
   });
 

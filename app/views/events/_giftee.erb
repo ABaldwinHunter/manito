@@ -1,1 +1,7 @@
-<h2>Your giftee: <a href="/wishlists/<%= @giftee.id %>"><%= @giftee.first_name %> <%= @giftee.last_name %></a></h2>
+  <% userevent = UserEvent.find_by(user_id: current_user.id, event_id: @event.id) %>
+  <% if userevent %>
+    <% if userevent.giftee_id %>
+      <% giftee = User.find(userevent.giftee_id) %>
+      <h2>Your giftee: <a href="/wishlists/<%= giftee.id %>"><%= giftee.first_name %> <%= giftee.last_name %></a></h2>
+    <% end %>
+  <% end %>

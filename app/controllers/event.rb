@@ -1,5 +1,5 @@
 require 'pry'
-require 'json'
+
 before '/events/*' do
   signed_in!
 end
@@ -78,11 +78,20 @@ get '/events/:id/assign', auth: :user do
     userevent.giftee_id = participants[index-1]
     userevent.save
   end
-  @giftee = User.find(1)
   erb(:'/events/_giftee', :layout => false)
-  # content_type :json
-  # {name: @giftee.first_name, lname: @giftee.last_name}.to_json
 end
 
 
-
+# get '/events/:id/assign', auth: :user do
+#   @event = Event.find(params[:id])
+#   participants = @event.users.map{|u|u.id}
+#   participants.each_with_index do |userid, index|
+#     userevent = UserEvent.find_by(user_id: userid, event_id: params[:id])
+#     userevent.giftee_id = participants[index-1]
+#     userevent.save
+#   end
+#   @giftee = User.find(1)
+#   erb(:'/events/_giftee', :layout => false)
+#   # content_type :json
+#   # {name: @giftee.first_name, lname: @giftee.last_name}.to_json
+# end
