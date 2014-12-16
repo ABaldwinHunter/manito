@@ -1,6 +1,6 @@
 
 
-post '/items' do
+post '/items', auth: :user do
   user = User.find session[:user_id]
   wishlist = user.wishlists.first
   wishlist.items.create(params[:item])

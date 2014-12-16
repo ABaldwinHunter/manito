@@ -3,7 +3,7 @@ get '/users/signup' do
   erb :'users/signup'
 end
 
-post '/users' , auth: :user do
+post '/users' do
   @user = User.create(params[:user])
   session[:user_id] = @user.id
   redirect "/users/#{@user.id}/events"
