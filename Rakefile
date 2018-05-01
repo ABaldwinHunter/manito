@@ -34,7 +34,6 @@ namespace :generate do
       raise "Must specificy resource name, e.g., rake generate:resource NAME=User"
     end
 
-
     resource_name     = ENV['NAME'].downcase
     resource_filename = ENV['NAME'].underscore + '.rb'
     resource_path = APP_ROOT.join('app', 'controllers', resource_filename)
